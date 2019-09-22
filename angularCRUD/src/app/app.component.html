@@ -1,0 +1,121 @@
+<div class="jumbotron">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h2>Student Registration</h2>
+                <form name="form" #userForm="ngForm" (ngSubmit)="onSave(userForm.value)" novalidate>
+                    <div class="form-group row">
+                    <div class="form-group">
+                        <input name="id" type="hidden"     [(ngModel)]="id" />  
+                        <label for="firstName">Student First Name</label>
+                        <input type="text" class="form-control" name="firstName" [(ngModel)]="firstName" />
+                         <!-- #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+                        <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+                            <div *ngIf="firstName.errors.required">First Name is required</div>
+                        </div> -->
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Student Last Name</label>
+                        <input type="text" class="form-control" name="lastName" [(ngModel)]="lastName"  />
+                        
+                        <!-- [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required /> -->
+                        <!-- <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+                            <div *ngIf="lastName.errors.required">Last Name is required</div>
+                        </div> -->
+                    </div>
+                    <div class="form-group">
+                        <label for="dateOfBirth">Date of Birth</label>
+                        <input type="date" class="form-control" name="dateOfBirth" [(ngModel)]="dateOfBirth"  />
+                         <!-- [ngClass]="{ 'is-invalid': f.submitted && dateOfBirth.invalid }" required /> -->
+                        <!-- <div *ngIf="f.submitted && dateOfBirth.invalid" class="invalid-feedback">
+                            <div *ngIf="dateOfBirth.errors.required">Date of Birth is required</div>
+                        </div> -->
+                    </div>
+                    </div>
+                    <div class="form-group row">
+                    <div class="form-group">
+                        <label for="dateOfRegistration">Date of Registration</label>
+                        <input type="date" class="form-control" name="dateOfRegistration" [(ngModel)]="dateOfRegistration"  />
+                         <!-- [ngClass]="{ 'is-invalid': f.submitted && dateOfRegistration.invalid }" required /> -->
+                        <!-- <div *ngIf="f.submitted && dateOfRegistration.invalid" class="invalid-feedback">
+                            <div *ngIf="dateOfRegistration.errors.required">Date of Registration is required</div>
+                        </div> -->
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" name="email" [(ngModel)]="email"  />
+                         <!-- [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email /> -->
+                        <!-- <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                            <div *ngIf="email.errors.required">Email is required</div>
+                            <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                        </div> -->
+                    </div>
+                    <div class="form-group">
+                        <label for="fatherName">Father Full Name</label>
+                        <input type="text" class="form-control" name="fatherName" [(ngModel)]="fatherName"  />
+                         <!-- [ngClass]="{ 'is-invalid': f.submitted && fatherName.invalid }" required /> -->
+                        <!-- <div *ngIf="f.submitted && fatherName.invalid" class="invalid-feedback">
+                            <div *ngIf="fatherName.errors.required">Father Name is required</div>
+                        </div> -->
+                    </div>
+                    </div>
+                    <div class="form-group">
+                            <input class="btn btn-primary" type="submit" value="{{valbutton}}" />  
+                            <!-- <button class="btn btn-primary" value="{{valbutton}}">Registration</button> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1">
+            <div class="colhead">ID</div>    
+        </div>
+        <div class="col-md-2">
+            <div class="colhead">First Name</div>
+        </div>
+        <div class="col-md-2">
+            <div class="colhead">Last Name</div>
+        </div>
+        <div class="col-md-2">
+            <div class="colhead">Date of Birth</div>
+        </div>    
+        <div class="col-md-1">
+            <div class="colhead">Date of Reg</div>
+        </div>
+        <div class="col-md-2">
+            <div class="colhead">Father Name</div>
+        </div>    
+        <div class="col-md-1">
+            <div class="colhead">Edit</div>
+        </div>    
+        <div class="col-md-1">
+            <div class="colhead">Delete</div>
+        </div>
+    </div>
+    <div class="row" *ngFor="let kk of Repdata;let ind = index">         
+        <div class="col-md-1">
+            <div class="columndata">{{ind + 1}}</div>
+        </div>  
+        <div class="col-md-2">
+            <div class="columndata">{{kk.firstName}}</div>  
+        </div>
+        <div class="col-md-2">
+            <div class="columndata">{{kk.lastName}}</div>  
+        </div>
+        <div class="col-md-2">
+            <div class="columndata">{{kk.dateOfBirth}}</div>  
+        </div>
+        <div class="col-md-1">
+            <div class="columndata">{{kk.dateOfRegistration}}</div>  
+        </div>
+        <div class="col-md-2">
+            <div class="columndata">{{kk.fatherName}}</div>  
+        </div>
+        <div class="columndata col-md-1">
+            <a (click)="edit(kk)" class="square_btn">Edit</a>
+        </div> 
+        <div class="columndata col-md-1">
+            <a (click)="delete(kk._id)" class="square_btn">Delete</a>
+        </div>
+    </div>          
+</div>
